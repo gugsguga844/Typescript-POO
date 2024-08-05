@@ -2,16 +2,16 @@
 
 import prompt from 'prompt-sync';
 import Company from './model/Company';
-
-export default class Personagem {
-    constructor(
-        public nome: string,
-        public numero: number
-    ) {}
-}
+import MicroCompany from './model/MicroCompany';
+import Datacenter from './db/Datacenter';
+import MicroCompanyController from './control/MicroCompanyController';
 
 let teclado = prompt();
 let option: number = 0;
+
+const datacenter = new Datacenter();
+const microCompanyController = new MicroCompanyController(datacenter);//instancia de datacenter sendo fornecida externamente
+
 while (option !== 9) {
     console.log('+=============PERSONAGEM===========+');
     console.log('| 1. Cadastrar Empresa');
@@ -21,23 +21,18 @@ while (option !== 9) {
 
     switch (option) {
         case 1:
-            const name = teclado("Digite o nome da empresa:");
-            const cnpj = teclado("Digite o CNPJ da empresa:");
-            const totalExpenses = parseFloat(teclado("Digite o total de despesas:"));
-            const totalRevenues = parseFloat(teclado("Digite o total de receitas:"));
-            const acumLoss = parseFloat(teclado("Digite o total de prejuízos acumulados:"));
-            const acumProfit = parseFloat(teclado("Digite o total de lucros acumulados:"));
-
-            let empresa: Company = new Company()
-
-            console.log(empresa.getName())
+          const name = teclado("Digite o nome da empresa");
+          const cnpj = teclado("Digite o cnpj da empresa");
+          let microCompany = microCompanyController.addMicroCompany(name, cnpj);
+          console.log(microCompany.getName())
+          console.log(microCompanyController.listAllFoods());
         break;
         case 3: 
             
         default:
         break;
     }
-}
+  }
 
 /* import promptSync from "prompt-sync";
 import MainOfficeController from "./control/MainOfficeController";

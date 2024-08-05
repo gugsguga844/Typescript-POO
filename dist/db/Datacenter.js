@@ -2,11 +2,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class Datacenter {
     constructor() {
-        this.mainOffices = [];
-        this.branches = [];
+        this.microCompanies = [];
+        this.normalCompanies = [];
     }
-    addNewMainOffice(main) {
-        this.mainOffices.push(main);
+    addNewMicroCompany(microCompany) {
+        this.microCompanies.push(microCompany);
     }
 }
 exports.default = Datacenter;

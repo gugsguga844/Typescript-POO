@@ -9,6 +9,11 @@ export default class Company {
     protected _acumLoss: number = 0;
     protected _acumProfit: number = 0;
 
+    constructor(name: string, cnpj: string){
+        this.setName(name);
+        this.setCnpj(cnpj)
+    }
+
     public getId(): number{
         return this._id;
     }
@@ -20,7 +25,12 @@ export default class Company {
         return this._name;
     }
     public setName(name: string): void{
-        this._name = name;
+        if(name.length > 5) {
+            this._name = name;
+        } else {
+            throw new Error("Erro");
+        }
+        
     }
 
     public getCnpj(): string{
@@ -58,3 +68,4 @@ export default class Company {
         this._acumProfit = acumProfit;
     }
 }
+

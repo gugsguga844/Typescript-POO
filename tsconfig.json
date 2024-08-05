@@ -5,6 +5,7 @@
 "rootDir": "./src",
 "module": "commonjs",
 "strict": true,
-"esModuleInterop": true
+"esModuleInterop": true,
+"moduleResolution": "node",
 }
 }

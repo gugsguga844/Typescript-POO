@@ -1,11 +1,11 @@
-import Branch from "../model/Branch";
-import MainOffice from "../model/MainOffice";
+import MicroCompany from "../model/MicroCompany";
+import NormalCompany from "../model/NormalCompany";
 
 export default class Datacenter{
-    public mainOffices: MainOffice[] = [];
-    public branches: Branch[] = [];
+    public microCompanies: MicroCompany[] = [];
+    public normalCompanies: NormalCompany[] = [];
 
-    public addNewMainOffice(main: MainOffice): void {
-        this.mainOffices.push(main);
+    public addNewMicroCompany(microCompany: MicroCompany): void {
+        this.microCompanies.push(microCompany);
     }
 }
