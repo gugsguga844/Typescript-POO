@@ -1,6 +1,6 @@
 import prompt from 'prompt-sync';
 
-export default class Company {
+export abstract class Company {
     protected _id: number = 0;
     protected _name: string = '';
     protected _cnpj: string = '';
@@ -9,9 +9,13 @@ export default class Company {
     protected _acumLoss: number = 0;
     protected _acumProfit: number = 0;
 
-    constructor(name: string, cnpj: string){
+    constructor(name: string, cnpj: string, expenses: number, revenues: number){
         this.setName(name);
-        this.setCnpj(cnpj)
+        this.setCnpj(cnpj);
+        this.setTotalExpenses(expenses);
+        this.setTotalRevenues(revenues); 
+        this.setAcumLoss;
+        this.setAcumProfit;
     }
 
     public getId(): number{
@@ -25,7 +29,7 @@ export default class Company {
         return this._name;
     }
     public setName(name: string): void{
-        if(name.length > 5) {
+        if(name.length > 2) {
             this._name = name;
         } else {
             throw new Error("Erro");
@@ -67,5 +71,7 @@ export default class Company {
     public setAcumProfit(acumProfit: number): void{
         this._acumProfit = acumProfit;
     }
+
+    public abstract calculateProfitOrLoss(): void;
 }
 

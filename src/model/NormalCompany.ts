@@ -1,12 +1,15 @@
-import Company from "./Company";
+import { Company } from "./Company";
 
 /* filial */
 
 export default class NormalCompany extends Company{
     private contributionTax: number = 0;
 
-    constructor(name: string, cnpj: string) {
-        super(name, cnpj)
+    constructor(name: string, cnpj: string, expenses: number, revenues: number) {
+        super(name, cnpj, expenses, revenues)
     }
 
+    public calculateProfitOrLoss(): void {
+        
+    }
 }

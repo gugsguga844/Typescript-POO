@@ -1,14 +1,13 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const Company_1 = __importDefault(require("./Company"));
+const Company_1 = require("./Company");
 /* filial */
-class NormalCompany extends Company_1.default {
-    constructor(name, cnpj) {
-        super(name, cnpj);
+class NormalCompany extends Company_1.Company {
+    constructor(name, cnpj, expenses, revenues) {
+        super(name, cnpj, expenses, revenues);
         this.contributionTax = 0;
+    }
+    calculateProfitOrLoss() {
     }
 }
 exports.default = NormalCompany;

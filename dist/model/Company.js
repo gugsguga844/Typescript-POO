@@ -1,7 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Company = void 0;
 class Company {
-    constructor(name, cnpj) {
+    constructor(name, cnpj, expenses, revenues) {
         this._id = 0;
         this._name = '';
         this._cnpj = '';
@@ -11,6 +12,10 @@ class Company {
         this._acumProfit = 0;
         this.setName(name);
         this.setCnpj(cnpj);
+        this.setTotalExpenses(expenses);
+        this.setTotalRevenues(revenues);
+        this.setAcumLoss;
+        this.setAcumProfit;
     }
     getId() {
         return this._id;
@@ -22,7 +27,7 @@ class Company {
         return this._name;
     }
     setName(name) {
-        if (name.length > 5) {
+        if (name.length > 2) {
             this._name = name;
         }
         else {
@@ -60,4 +65,4 @@ class Company {
         this._acumProfit = acumProfit;
     }
 }
-exports.default = Company;
+exports.Company = Company;
