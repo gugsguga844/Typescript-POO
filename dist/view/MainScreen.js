@@ -45,14 +45,9 @@ class MainScreen {
                         case companyType.NORMAL:
                             break;
                     }
-                    //register.registerCompany();
-                    /*switch (option2) {
-                        case companyType.MICRO:
-                            register.registerCompany();
-                        break;
-                        case companyType.NORMAL:
-
-                    }*/
+                    break;
+                case 2:
+                    register.alterCompany();
                     break;
                 case 3:
                     register.findCompanyByName();

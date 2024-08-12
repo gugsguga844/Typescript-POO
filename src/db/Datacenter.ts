@@ -15,4 +15,5 @@ export default class Datacenter{
     public findCompanyByName(nomeBuscado: string): MicroCompany | undefined {
         return this.microCompanies.find(company => company.getName() === nomeBuscado);
     }
+
 }

@@ -40,7 +40,6 @@ export default class MainScreen{
 
             switch (option) {
                 case 1:
-
                     const selectOption = parseInt(this.prompt("Cadastrar Empresa:\n1. MicroEmpresa\n2. Empresa Normal\nQue tipo de empresa deseja cadastrar?\n"));
 
                     switch (selectOption) {
@@ -51,14 +50,9 @@ export default class MainScreen{
                             
                         break;
                     }
-                    //register.registerCompany();
-                    /*switch (option2) {
-                        case companyType.MICRO:
-                            register.registerCompany();
-                        break;
-                        case companyType.NORMAL:
-
-                    }*/
+                break;
+                case 2:
+                    register.alterCompany();
                 break;
                 case 3: 
                     register.findCompanyByName();

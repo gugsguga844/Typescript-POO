@@ -22,4 +22,33 @@ export default class Register {
         const foundCompany = this.microCompanyController.findCompany(nomeBuscado);
         console.log(foundCompany);
     }
+
+    public alterCompany(): void {
+        const thisCompamy = this.prompt("Qual empresa deseja alterar? ");
+        const companyToChange = this.microCompanyController.findCompany(thisCompamy);
+
+        if (companyToChange) {
+            let choose: number = 0;
+            choose = parseInt(this.prompt("O que deseja alterar? "));
+
+            enum wichData {
+                NAME = 1,
+                CNPJ,
+                REVENUES,
+                EXPENSES,
+            }
+
+            switch (choose) {
+                case wichData.NAME:
+                    let newName: string = this.prompt("Novo nome: ");
+                    companyToChange.setName(newName);
+                break;
+                case wichData.REVENUES:
+                    let newRevenue: number = parseInt(this.prompt("Receita Atualizada: "));
+                    companyToChange.setTotalRevenues(newRevenue)
+                    companyToChange.calculateProfitOrLoss();
+                break;
+            }
+        }
+    }
 }
