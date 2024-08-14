@@ -4,20 +4,30 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const prompt_sync_1 = __importDefault(require("prompt-sync"));
-const MicroCompanyController_1 = __importDefault(require("../control/MicroCompanyController"));
 class Register {
-    constructor() {
+    constructor(microCompanyController, normalCompanyController) {
         this.prompt = (0, prompt_sync_1.default)();
-        this.microCompanyController = new MicroCompanyController_1.default();
+        this.microCompanyController = microCompanyController;
+        this.normalCompanyController = normalCompanyController;
     }
+    // get instance
     registerCompany() {
         const name = this.prompt("Nome: ");
-        const cnpj = this.prompt("CNPJ: ");
+        const cnpj = this.prompt("CNPJ: "); // talvez criar um metodo so pro prompt?
         const revenues = parseInt(this.prompt("Despesas: "));
         const expenses = parseInt(this.prompt("Receitas: "));
         let microCompany = this.microCompanyController.addMicroCompany(name, cnpj, revenues, expenses);
         console.log(this.microCompanyController.listAllFoods());
         console.log("Total de Lucro: ", microCompany.getAcumProfit());
+    }
+    registerNormalCompany() {
+        const name = this.prompt("Nome: ");
+        const cnpj = this.prompt("CNPJ: ");
+        const revenues = parseInt(this.prompt("Despesas: "));
+        const expenses = parseInt(this.prompt("Receitas: "));
+        let normalCompany = this.normalCompanyController.addNormalCompany(name, cnpj, revenues, expenses);
+        console.log(this.normalCompanyController.listAllNormalCompanies());
+        console.log("Total de Lucro: ", normalCompany.getAcumProfit());
     }
     findCompanyByName() {
         const nomeBuscado = this.prompt("Qual o nome da empresa? ");
@@ -25,8 +35,8 @@ class Register {
         console.log(foundCompany);
     }
     alterCompany() {
-        const thisCompamy = this.prompt("Qual empresa deseja alterar? ");
-        const companyToChange = this.microCompanyController.findCompany(thisCompamy);
+        const thisCompany = this.prompt("Qual empresa deseja alterar? ");
+        const companyToChange = this.microCompanyController.findCompany(thisCompany);
         if (companyToChange) {
             let choose = 0;
             choose = parseInt(this.prompt("O que deseja alterar? "));

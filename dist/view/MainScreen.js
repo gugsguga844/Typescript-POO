@@ -7,8 +7,10 @@ const prompt_sync_1 = __importDefault(require("prompt-sync"));
 const MicroCompanyController_1 = __importDefault(require("../control/MicroCompanyController"));
 const Register_1 = __importDefault(require("./Register"));
 class MainScreen {
-    constructor() {
+    constructor(microCompanyController, normalCompanyController) {
         this.prompt = (0, prompt_sync_1.default)();
+        this.microCompanyController = microCompanyController;
+        this.normalCompanyController = normalCompanyController;
     }
     getFirstScreen() {
         let option = 0;
@@ -43,6 +45,7 @@ class MainScreen {
                             register.registerCompany();
                             break;
                         case companyType.NORMAL:
+                            register.registerNormalCompany();
                             break;
                     }
                     break;

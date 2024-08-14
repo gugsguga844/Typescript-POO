@@ -7,7 +7,7 @@ const Datacenter_1 = __importDefault(require("../db/Datacenter"));
 const MicroCompany_1 = __importDefault(require("../model/MicroCompany"));
 class MicroCompanyController {
     constructor() {
-        this.datacenter = new Datacenter_1.default(); // datacenter passado como parametro para o construtor
+        this.datacenter = new Datacenter_1.default();
     }
     addMicroCompany(name, cnpj, expenses, revenues) {
         let microCompany = new MicroCompany_1.default(name, cnpj, expenses, revenues);

@@ -4,10 +4,18 @@ import MicroCompany from "../model/MicroCompany";
 import MicroCompanyController from "../control/MicroCompanyController";
 import Datacenter from "../db/Datacenter";
 import Register from "./Register";
+import NormalCompanyController from "../control/NormalCompanyController";
 
 export default class MainScreen{
 
+    private microCompanyController: MicroCompanyController;
+    private normalCompanyController: NormalCompanyController;
     private prompt = promptSync();
+
+    constructor (microCompanyController: MicroCompanyController, normalCompanyController: NormalCompanyController) {
+        this.microCompanyController = microCompanyController;
+        this.normalCompanyController = normalCompanyController;
+    }
 
     public getFirstScreen(): void{
         let option: number = 0;
@@ -47,7 +55,7 @@ export default class MainScreen{
                             register.registerCompany();
                         break;
                         case companyType.NORMAL:
-                            
+                            register.registerNormalCompany();
                         break;
                     }
                 break;

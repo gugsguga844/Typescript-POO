@@ -12,7 +12,13 @@ export default class Datacenter{
         this.microCompanies.push(microCompany);
     }
 
-    public findCompanyByName(nomeBuscado: string): MicroCompany | undefined {
+    public addNewNormalCompany(normalCompany: NormalCompany): void {
+        normalCompany.setId(this.nextId); // Atribui o próximo ID
+        this.nextId++;
+        this.normalCompanies.push(normalCompany);
+    }
+
+    public findCompanyByName(nomeBuscado: string): MicroCompany | NormalCompany | undefined {
         return this.microCompanies.find(company => company.getName() === nomeBuscado);
     }
 
