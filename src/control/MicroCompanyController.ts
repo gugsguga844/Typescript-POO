@@ -11,17 +11,15 @@ export default class MicroCompanyController{
         return microCompany;
     }
 
-    
-
     public getNewMicroCompany(name: string, cnpj: string, expenses: number, revenues: number): MicroCompany{
         return new MicroCompany(name, cnpj, expenses, revenues);
     }
 
-    public listAllFoods(): void{
+    public listAllMicroCompanies(): void{
         console.log(this.datacenter.microCompanies);
     }
 
     public findCompany(nomeBuscado: string): MicroCompany | NormalCompany | undefined {
-        return this.datacenter.findCompanyByName(nomeBuscado);
+        return this.datacenter.findMicroCompanyByName(nomeBuscado);
     }
 }

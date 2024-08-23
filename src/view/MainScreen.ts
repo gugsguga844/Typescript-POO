@@ -11,16 +11,17 @@ export default class MainScreen{
     private microCompanyController: MicroCompanyController;
     private normalCompanyController: NormalCompanyController;
     private prompt = promptSync();
+    private register: Register;
 
-    constructor (microCompanyController: MicroCompanyController, normalCompanyController: NormalCompanyController) {
+    constructor (microCompanyController: MicroCompanyController, normalCompanyController: NormalCompanyController, register: Register) {
         this.microCompanyController = microCompanyController;
         this.normalCompanyController = normalCompanyController;
+        this.register = register;
     }
 
     public getFirstScreen(): void{
         let option: number = 0;
         let option2: number = 0;
-        let register: Register = new Register();
 
         const microCompanyController = new MicroCompanyController();
 
@@ -35,11 +36,11 @@ export default class MainScreen{
             console.log('| 1. Cadastrar Empresa                   |');
             console.log('| 2. Editar Empresa                      |');
             console.log('| 3. Consultar Empresa                   |');
-            console.log('| 4. Excluir Empresa                     |');
-            console.log('| 5. Cadastrar Empresa                   |');
-            console.log('| 6. Cadastrar Empresa                   |');
-            console.log('| 7. Cadastrar Empresa                   |');
-            console.log('| 8. Cadastrar Empresa                   |');
+            console.log('| 4. Atribuir Investimento               |');
+            console.log('| 5. Listar Empresas                     |');
+            console.log('| 6. Excluir Empresa                     |');
+            console.log('|                                        |');
+            console.log('|                                        |');
             console.log('| 9. Sair                                |');
             console.log('|                                        |');
             console.log('+ ====================================== +');
@@ -52,19 +53,28 @@ export default class MainScreen{
 
                     switch (selectOption) {
                         case companyType.MICRO:
-                            register.registerCompany();
+                            this.register.registerMicroCompany();
                         break;
                         case companyType.NORMAL:
-                            register.registerNormalCompany();
+                            this.register.registerNormalCompany();
                         break;
                     }
                 break;
                 case 2:
-                    register.alterCompany();
+                    this.register.alterCompany();
                 break;
                 case 3: 
-                    register.findCompanyByName();
+                    this.register.findCompanyByName();
                 default:
+                break;
+                case 4:
+                    this.register.addInvestor();
+                break;
+                case 5:
+                    this.microCompanyController.listAllMicroCompanies();
+                    this.normalCompanyController.listAllNormalCompanies();
+                break;
+                case 6:
                 break;
             }
         }

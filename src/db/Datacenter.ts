@@ -18,7 +18,11 @@ export default class Datacenter{
         this.normalCompanies.push(normalCompany);
     }
 
-    public findCompanyByName(nomeBuscado: string): MicroCompany | NormalCompany | undefined {
+    public findMicroCompanyByName(nomeBuscado: string): MicroCompany | NormalCompany | undefined {
+        return this.microCompanies.find(company => company.getName() === nomeBuscado);
+    }
+
+    public findNormalCompanyByName(nomeBuscado: string): MicroCompany | NormalCompany | undefined {
         return this.microCompanies.find(company => company.getName() === nomeBuscado);
     }
 

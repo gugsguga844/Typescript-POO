@@ -1,4 +1,5 @@
 import Datacenter from "../db/Datacenter";
+import BasicInvestor from "../model/Investment/BasicInvestor";
 import MicroCompany from "../model/MicroCompany";
 import NormalCompany from "../model/NormalCompany";
 
@@ -16,10 +17,14 @@ export default class NormalCompanyController{
     }
 
     public listAllNormalCompanies(): void{
-        console.log(this.datacenter.microCompanies);
+        console.log(this.datacenter.normalCompanies);
     }
 
     public findCompany(nomeBuscado: string): NormalCompany | MicroCompany | undefined {
-        return this.datacenter.findCompanyByName(nomeBuscado);
+        return this.datacenter.findNormalCompanyByName(nomeBuscado);
+    }
+
+    public createInvestor(name: string, netWorth: number): BasicInvestor{
+        return new BasicInvestor(name, netWorth)
     }
 }

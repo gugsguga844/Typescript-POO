@@ -16,7 +16,10 @@ class Datacenter {
         this.nextId++;
         this.normalCompanies.push(normalCompany);
     }
-    findCompanyByName(nomeBuscado) {
+    findMicroCompanyByName(nomeBuscado) {
+        return this.microCompanies.find(company => company.getName() === nomeBuscado);
+    }
+    findNormalCompanyByName(nomeBuscado) {
         return this.microCompanies.find(company => company.getName() === nomeBuscado);
     }
 }

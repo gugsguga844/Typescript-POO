@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const Datacenter_1 = __importDefault(require("../db/Datacenter"));
+const BasicInvestor_1 = __importDefault(require("../model/Investment/BasicInvestor"));
 const NormalCompany_1 = __importDefault(require("../model/NormalCompany"));
 class NormalCompanyController {
     constructor() {
@@ -18,10 +19,13 @@ class NormalCompanyController {
         return new NormalCompany_1.default(name, cnpj, expenses, revenues);
     }
     listAllNormalCompanies() {
-        console.log(this.datacenter.microCompanies);
+        console.log(this.datacenter.normalCompanies);
     }
     findCompany(nomeBuscado) {
-        return this.datacenter.findCompanyByName(nomeBuscado);
+        return this.datacenter.findNormalCompanyByName(nomeBuscado);
+    }
+    createInvestor(name, netWorth) {
+        return new BasicInvestor_1.default(name, netWorth);
     }
 }
 exports.default = NormalCompanyController;
