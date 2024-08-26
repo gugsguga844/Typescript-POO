@@ -26,11 +26,10 @@ class MainScreen {
             console.log('|                                        |');
             console.log('| 1. Cadastrar Empresa                   |');
             console.log('| 2. Editar Empresa                      |');
-            console.log('| 3. Consultar Empresa                   |');
-            console.log('| 4. Atribuir Investimento               |');
-            console.log('| 5. Listar Empresas                     |');
-            console.log('| 6. Excluir Empresa                     |');
-            console.log('|                                        |');
+            console.log('| 3. Consultar Micro-Empresa             |');
+            console.log('| 4. Consultar Empresa Normal            |');
+            console.log('| 5. Atribuir Investimento               |');
+            console.log('| 6. Listar Empresas                     |');
             console.log('|                                        |');
             console.log('| 9. Sair                                |');
             console.log('|                                        |');
@@ -52,17 +51,19 @@ class MainScreen {
                     this.register.alterCompany();
                     break;
                 case 3:
-                    this.register.findCompanyByName();
+                    this.register.findMicroCompany();
                 default:
                     break;
                 case 4:
+                    this.register.findCompanyByName();
+                case 5:
                     this.register.addInvestor();
                     break;
-                case 5:
+                case 6:
                     this.microCompanyController.listAllMicroCompanies();
                     this.normalCompanyController.listAllNormalCompanies();
                     break;
-                case 6:
+                case 7:
                     break;
             }
         }

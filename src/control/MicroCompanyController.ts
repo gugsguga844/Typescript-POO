@@ -19,7 +19,7 @@ export default class MicroCompanyController{
         console.log(this.datacenter.microCompanies);
     }
 
-    public findCompany(nomeBuscado: string): MicroCompany | NormalCompany | undefined {
-        return this.datacenter.findMicroCompanyByName(nomeBuscado);
+    public findCompany(identifier: string, isCnpj: boolean = false): MicroCompany | NormalCompany | undefined {
+        return this.datacenter.findMicroCompany(identifier);
     }
 }

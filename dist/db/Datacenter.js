@@ -16,11 +16,16 @@ class Datacenter {
         this.nextId++;
         this.normalCompanies.push(normalCompany);
     }
-    findMicroCompanyByName(nomeBuscado) {
-        return this.microCompanies.find(company => company.getName() === nomeBuscado);
+    findMicroCompany(identifier, isCnpj = false) {
+        if (isCnpj) {
+            return this.microCompanies.find(company => company.getCnpj() === identifier);
+        }
+        else {
+            return this.microCompanies.find(company => company.getName() === identifier);
+        }
     }
     findNormalCompanyByName(nomeBuscado) {
-        return this.microCompanies.find(company => company.getName() === nomeBuscado);
+        return this.normalCompanies.find(company => company.getName() === nomeBuscado);
     }
 }
 exports.default = Datacenter;

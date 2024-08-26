@@ -20,8 +20,8 @@ class MicroCompanyController {
     listAllMicroCompanies() {
         console.log(this.datacenter.microCompanies);
     }
-    findCompany(nomeBuscado) {
-        return this.datacenter.findMicroCompanyByName(nomeBuscado);
+    findCompany(identifier, isCnpj = false) {
+        return this.datacenter.findMicroCompany(identifier);
     }
 }
 exports.default = MicroCompanyController;
