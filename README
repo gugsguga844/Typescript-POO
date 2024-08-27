@@ -1,0 +1,31 @@
+# Gestão de Empresas por um Escritório de Contabilidade
+
+- O objetivo do sistema é manter um controle dos resultados financeiros
+de uma determinada empresa de acordo com valores informados.
+
+- Podem ser cadastradas dois tipos de empresa.
+
+- As empresas podem ter investidores
+
+As empresas terão um total de receitas e total de despesas, apresentando ao final o resultado (lucro ou prejuizo)
+
+## Traduções
+
+// MicroCompany: Micro-Empresa
+// NormalCompany: Empresa Normal
+// Investor: Investidor
+
+### Requisitos
+
+- Injeção de Dependência: Register e Controller
+- Enum: Usado pra descrever as opções dos switches
+- Classe Abstrata: classe "Company", apenas suas heranças são instanciadas
+- Interface: Investor define os tipos de investidores
+- Sobrescrita: calculateProfitOrLoss()
+- Sobrecarga: Método findMicroCompany no Datacenter
+- Try-Catch e Exceção: 
+- Testes: Cálculo dos lucros
+- MVC: Sim, Model, View e Controllers
+- Gerenciamento: Sim
+- Tipos Genéricos:
+- Inovação: Opção de gerar um PDF contendo os dados das empresas
