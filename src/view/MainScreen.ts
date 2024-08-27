@@ -4,15 +4,24 @@ import MicroCompany from "../model/MicroCompany";
 import MicroCompanyController from "../control/MicroCompanyController";
 import Datacenter from "../db/Datacenter";
 import Register from "./Register";
+import NormalCompanyController from "../control/NormalCompanyController";
 
 export default class MainScreen{
 
+    private microCompanyController: MicroCompanyController;
+    private normalCompanyController: NormalCompanyController;
     private prompt = promptSync();
+    private register: Register;
+
+    constructor (microCompanyController: MicroCompanyController, normalCompanyController: NormalCompanyController, register: Register) {
+        this.microCompanyController = microCompanyController;
+        this.normalCompanyController = normalCompanyController;
+        this.register = register;
+    }
 
     public getFirstScreen(): void{
         let option: number = 0;
         let option2: number = 0;
-        let register: Register = new Register();
 
         const microCompanyController = new MicroCompanyController();
 
@@ -26,12 +35,12 @@ export default class MainScreen{
             console.log('|                                        |');
             console.log('| 1. Cadastrar Empresa                   |');
             console.log('| 2. Editar Empresa                      |');
-            console.log('| 3. Consultar Empresa                   |');
-            console.log('| 4. Excluir Empresa                     |');
-            console.log('| 5. Cadastrar Empresa                   |');
-            console.log('| 6. Cadastrar Empresa                   |');
-            console.log('| 7. Cadastrar Empresa                   |');
-            console.log('| 8. Cadastrar Empresa                   |');
+            console.log('| 3. Consultar Micro-Empresa             |');
+            console.log('| 4. Consultar Empresa Normal            |');
+            console.log('| 5. Atribuir Investimento               |');
+            console.log('| 6. Listar Empresas                     |');
+            console.log('| 7. Imprimir Empresas                   |');
+            console.log('|                                        |');
             console.log('| 9. Sair                                |');
             console.log('|                                        |');
             console.log('+ ====================================== +');
@@ -40,29 +49,36 @@ export default class MainScreen{
 
             switch (option) {
                 case 1:
-
                     const selectOption = parseInt(this.prompt("Cadastrar Empresa:\n1. MicroEmpresa\n2. Empresa Normal\nQue tipo de empresa deseja cadastrar?\n"));
 
                     switch (selectOption) {
                         case companyType.MICRO:
-                            register.registerCompany();
+                            this.register.registerMicroCompany();
                         break;
                         case companyType.NORMAL:
-                            
+                            this.register.registerNormalCompany();
                         break;
                     }
-                    //register.registerCompany();
-                    /*switch (option2) {
-                        case companyType.MICRO:
-                            register.registerCompany();
-                        break;
-                        case companyType.NORMAL:
-
-                    }*/
+                break;
+                case 2:
+                    this.register.alterCompany();
                 break;
                 case 3: 
-                    register.findCompanyByName();
+                    this.register.findMicroCompany();
                 default:
+                break;
+                case 4:
+                    this.register.findCompanyByName();
+                break;
+                case 5:
+                    this.register.addInvestor();
+                break;
+                case 6:
+                    this.microCompanyController.listAllMicroCompanies();
+                    this.normalCompanyController.listAllNormalCompanies();
+                break;
+                case 7:
+                    this.microCompanyController.generatePdf();
                 break;
             }
         }

@@ -64,5 +64,8 @@ class Company {
     setAcumProfit(acumProfit) {
         this._acumProfit = acumProfit;
     }
+    calculateProfitOrLoss() {
+        throw new Error("Método 'calculateProfitOrLoss' não implementado.");
+    }
 }
 exports.Company = Company;

@@ -12,7 +12,22 @@ export default class Datacenter{
         this.microCompanies.push(microCompany);
     }
 
-    public findCompanyByName(nomeBuscado: string): MicroCompany | undefined {
-        return this.microCompanies.find(company => company.getName() === nomeBuscado);
+    public addNewNormalCompany(normalCompany: NormalCompany): void {
+        normalCompany.setId(this.nextId); // Atribui o próximo ID
+        this.nextId++;
+        this.normalCompanies.push(normalCompany);
     }
+
+    public findMicroCompany(identifier: string, isCnpj: boolean = false): MicroCompany | undefined {
+        if (isCnpj) {
+            return this.microCompanies.find(company => company.getCnpj() === identifier);
+        } else {
+            return this.microCompanies.find(company => company.getName() === identifier);
+        }
+    }
+
+    public findNormalCompanyByName(nomeBuscado: string): NormalCompany | MicroCompany | undefined {
+        return this.normalCompanies.find(company => company.getName() === nomeBuscado);
+    }
+
 }
