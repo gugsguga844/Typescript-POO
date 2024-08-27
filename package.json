@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "jspdf": "^2.5.1",
     "prompt-sync": "^4.2.0",
     "typescript": "^5.5.4"
   },

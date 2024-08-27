@@ -39,6 +39,7 @@ export default class MainScreen{
             console.log('| 4. Consultar Empresa Normal            |');
             console.log('| 5. Atribuir Investimento               |');
             console.log('| 6. Listar Empresas                     |');
+            console.log('| 7. Imprimir Empresas                   |');
             console.log('|                                        |');
             console.log('| 9. Sair                                |');
             console.log('|                                        |');
@@ -77,6 +78,7 @@ export default class MainScreen{
                     this.normalCompanyController.listAllNormalCompanies();
                 break;
                 case 7:
+                    this.microCompanyController.generatePdf();
                 break;
             }
         }

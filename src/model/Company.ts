@@ -72,6 +72,8 @@ export abstract class Company {
         this._acumProfit = acumProfit;
     }
 
-    public abstract calculateProfitOrLoss(): void;
+    public calculateProfitOrLoss(): void {
+        throw new Error("Método 'calculateProfitOrLoss' não implementado.");
+    }
 }
 

@@ -28,9 +28,9 @@ export default class Register {
             console.log(this.microCompanyController.listAllMicroCompanies());
 
             if (microCompany.getAcumProfit() >= 0) {
-                console.log("Lucro auferido no período: ", microCompany.getAcumProfit());
+                console.log("Lucro auferido no período:", microCompany.getAcumProfit());
             } else {
-                console.log("Prejuízo auferido no período: ", microCompany.getAcumLoss());
+                console.log("Prejuízo auferido no período:", microCompany.getAcumLoss());
             }
         } catch (error: unknown) {
             if (error instanceof Error) {
@@ -138,7 +138,8 @@ export default class Register {
             if (amountToInvest > newInvestor.netWorth) {
                 console.log("O investidor não tem patrimônio suficiente.");
             } else {
-                newInvestor.invest(companyToChange as NormalCompany, amountToInvest); // Faz o investimento
+                newInvestor.invest(companyToChange as NormalCompany, amountToInvest);
+                companyToChange.calculateProfitOrLoss();
             }
         } else {
             console.log("Empresa não encontrada.");

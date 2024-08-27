@@ -20,10 +20,10 @@ class Register {
             let microCompany = this.microCompanyController.addMicroCompany(name, cnpj, revenues, expenses);
             console.log(this.microCompanyController.listAllMicroCompanies());
             if (microCompany.getAcumProfit() >= 0) {
-                console.log("Lucro auferido no período: ", microCompany.getAcumProfit());
+                console.log("Lucro auferido no período:", microCompany.getAcumProfit());
             }
             else {
-                console.log("Prejuízo auferido no período: ", microCompany.getAcumLoss());
+                console.log("Prejuízo auferido no período:", microCompany.getAcumLoss());
             }
         }
         catch (error) {
@@ -50,7 +50,7 @@ class Register {
         }
     }
     findMicroCompany() {
-        const nameOrCnpj = parseInt(this.prompt("Deseja buscar pelo nome ou pelo CNPJ?\n1. Nome\n2. CNPJ:\n"));
+        const nameOrCnpj = parseInt(this.prompt("Deseja buscar pelo nome ou pelo CNPJ?\n1. Nome\n2. CNPJ\n"));
         switch (nameOrCnpj) {
             case 1:
                 const name = this.prompt("Digite o nome da empresa: ");
@@ -122,7 +122,8 @@ class Register {
                 console.log("O investidor não tem patrimônio suficiente.");
             }
             else {
-                newInvestor.invest(companyToChange, amountToInvest); // Faz o investimento
+                newInvestor.invest(companyToChange, amountToInvest);
+                companyToChange.calculateProfitOrLoss();
             }
         }
         else {
